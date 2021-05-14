@@ -8,7 +8,7 @@ Created on Fri May  7 16:08:42 2021
 from onc.onc import ONC
 
 # Parameters
-my_token = 'f53d5fdd-790a-4cc7-b3f5-5ec405bb1054'
+my_token = ''
 device_code = 'DRAGONFISHSUBC13113'
 #dataProductCode = 'ARIS'
 save_dir = r'C:\Users\xavier.mouy\Documents'
