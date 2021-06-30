@@ -32,6 +32,7 @@ def init_dataframe(behavior_labels, zeros = False):
                        'detection_hour':[],
                        'detection_minute':[],
                        'detection_second':[],
+                       'detection_microsecond':[],
                        'detection_id':[],
                        'track_relative_id':[],
                        'track_global_id':[],
@@ -51,7 +52,6 @@ def init_dataframe(behavior_labels, zeros = False):
 
 
 indir = r'C:\Users\xavier.mouy\Documents\PhD\Projects\ONC\ONC_Fish_Acoustic_Experiment\manual_annotations'
-infile = r'DRAGONFISHSUBC13113_20171201T170752.csv'
 outdir = r'C:\Users\xavier.mouy\Documents\PhD\Projects\ONC\ONC_Fish_Acoustic_Experiment\manual_annotations\merged'
 filename_date_start_idx = 20
 filename_date_end_idx = 35
@@ -63,8 +63,8 @@ global_track_id = 0
 
 # Go through each file
 file_idx = 0
-for file in os.listdir(indir):
-    if file.endswith(".csv"):
+for infile in os.listdir(indir):
+    if infile.endswith(".csv"):
         file_idx += 1
         print(infile)
         
@@ -99,6 +99,7 @@ for file in os.listdir(indir):
                 single_annot['detection_hour'] = detec_time.hour
                 single_annot['detection_minute'] = detec_time.minute
                 single_annot['detection_second'] = detec_time.second
+                single_annot['detection_microsecond'] = detec_time.microsecond                
                 single_annot['detection_id'] = row[9]
                 current_track_id = int(row[0])
                 if current_track_id != previous_track_id:
@@ -118,8 +119,8 @@ for file in os.listdir(indir):
                     
                 previous_track_id = copy.copy(current_track_id)        
                 annot_dataset = annot_dataset.append(single_annot,ignore_index=True)
-
+        global_track_id +=1
 
 # write csv file
-annot_dataset.to_csv(os.path.join(outdir,'merged_annotation_dataset.csv'))
+annot_dataset.to_csv(os.path.join(outdir,'merged_annotation_dataset.csv'),index=False)
 
