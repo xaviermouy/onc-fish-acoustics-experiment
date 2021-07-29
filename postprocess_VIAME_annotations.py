@@ -55,7 +55,7 @@ indir = r'C:\Users\xavier.mouy\Documents\PhD\Projects\ONC\ONC_Fish_Acoustic_Expe
 outdir = r'C:\Users\xavier.mouy\Documents\PhD\Projects\ONC\ONC_Fish_Acoustic_Experiment\manual_annotations\merged'
 filename_date_start_idx = 20
 filename_date_end_idx = 35
-behavior_labels = ['SHD', 'FIN','SWM','CRWL','STRT','DIVE','APPR','REST','SNAP']
+behavior_labels = ['SHD', 'FIN','SWM','CRWL','STRT PRX','DIVE','APPR','REST','SNAP']
 
 # Initialize the glabal dataframe for the entire dataset
 annot_dataset = init_dataframe(behavior_labels)
